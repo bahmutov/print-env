@@ -4,7 +4,7 @@
   "version": "0.0.0-development",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "bugs": "https://github.com/bahmutov/print-env/issues",
-  "alias": {
+  "bin": {
     "print-env": "bin/print-env.js"
   },
   "config": {
