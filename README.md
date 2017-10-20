@@ -8,15 +8,26 @@
 [![semantic-release][semantic-image] ][semantic-url]
 [![js-standard-style][standard-image]][standard-url]
 
-## Install
+## Install and use
 
 Requires [Node](https://nodejs.org/en/) version 6 or above.
 
+Usually on your CI, you can just install this CLI tool globally
+
 ```sh
-npm install --save @bahmutov/print-env
+npm install @bahmutov/print-env
 ```
 
-## Use
+Then call the tool with prefix, for example to show all Travis vars
+
+```sh
+$ print-env TRAVIS
+TRAVIS_BRANCH=master
+TRAVIS_SUDO=false
+TRAVIS_NODE_VERSION=8
+TRAVIS_PRE_CHEF_BOOTSTRAP_TIME=2017-08-29T02:16:18
+...
+```
 
 ### Small print
 
