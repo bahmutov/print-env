@@ -2,9 +2,24 @@
 
 /* eslint-env mocha */
 const printEnv = require('.')
+const clone = x => JSON.parse(JSON.stringify(x))
+const snapshot = require('snap-shot-it')
 
 describe('@bahmutov/print-env', () => {
-  it('write this test', () => {
-    console.assert(printEnv, 'should export something')
+  let env
+
+  beforeEach(() => {
+    env = clone(process.env)
+  })
+
+  afterEach(() => {
+    process.env = env
+  })
+
+  it('returns only prefixed env vars', () => {
+    process.env.FOOXFF = 'foo'
+    process.env.FOOXFE = 'bar'
+    process.env.FOOXFA = 'baz'
+    snapshot(printEnv('FOOX'))
   })
 })
