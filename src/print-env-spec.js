@@ -4,12 +4,17 @@
 const printEnv = require('.')
 const clone = x => JSON.parse(JSON.stringify(x))
 const snapshot = require('snap-shot-it')
+const execa = require('execa')
+const join = require('path').join
 
 describe('@bahmutov/print-env', () => {
   let env
 
   beforeEach(() => {
     env = clone(process.env)
+    process.env.FOOXFF = 'foo'
+    process.env.FOOXFE = 'bar'
+    process.env.FOOXFA = 'baz'
   })
 
   afterEach(() => {
@@ -17,9 +22,15 @@ describe('@bahmutov/print-env', () => {
   })
 
   it('returns only prefixed env vars', () => {
-    process.env.FOOXFF = 'foo'
-    process.env.FOOXFE = 'bar'
-    process.env.FOOXFA = 'baz'
     snapshot(printEnv('FOOX'))
+  })
+
+  describe('bin command', () => {
+    const bin = join(__dirname, '..', 'bin', 'print-env.js')
+    it('prints sorted variables', () => {
+      return execa('node', [bin, 'FOOX'], { env: process.env })
+        .then(result => result.stdout)
+        .then(snapshot)
+    })
   })
 })

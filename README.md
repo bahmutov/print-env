@@ -29,6 +29,8 @@ TRAVIS_PRE_CHEF_BOOTSTRAP_TIME=2017-08-29T02:16:18
 ...
 ```
 
+Variables are sorted alphabetically.
+
 ### Small print
 
 Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2017

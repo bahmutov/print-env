@@ -13,6 +13,8 @@ if (!prefix) {
 const getVars = require('..')
 const variables = getVars(prefix)
 // an object
-Object.keys(variables).forEach(key => {
-  console.log('%s=%s', key, variables[key])
-})
+Object.keys(variables)
+  .sort()
+  .forEach(key => {
+    console.log('%s=%s', key, variables[key])
+  })
