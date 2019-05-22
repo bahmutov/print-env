@@ -31,6 +31,17 @@ TRAVIS_PRE_CHEF_BOOTSTRAP_TIME=2017-08-29T02:16:18
 
 Variables are sorted alphabetically.
 
+### has-env
+
+You can also check if sensitive variables are present using `has-env PREFIX` syntax. In that case the values are not printed, only "present: true"
+
+```sh
+$ print-env GH
+GH_API_KEY is present: true
+GH_INSTALLATION_ID is present: true
+...
+```
+
 ### Small print
 
 Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2017
