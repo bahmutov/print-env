@@ -33,4 +33,13 @@ describe('@bahmutov/print-env', () => {
         .then(snapshot)
     })
   })
+
+  describe('bin has-env command', () => {
+    const bin = join(__dirname, '..', 'bin', 'has-env.js')
+    it('prints present sorted variables', () => {
+      return execa('node', [bin, 'FOOX'], { env: process.env })
+        .then(result => result.stdout)
+        .then(snapshot)
+    })
+  })
 })
