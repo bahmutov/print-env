@@ -36,7 +36,7 @@ Variables are sorted alphabetically.
 You can also check if sensitive variables are present using `has-env PREFIX` syntax. In that case the values are not printed, only "present: true"
 
 ```sh
-$ print-env GH
+$ has-env GH
 GH_API_KEY is present: true
 GH_INSTALLATION_ID is present: true
 ...
