@@ -42,6 +42,22 @@ GH_INSTALLATION_ID is present: true
 ...
 ```
 
+### npx
+
+You can run this tool without installing it permanently using `npx` command
+
+```sh
+$ npx -p @bahmutov/print-env has-env USER
+npx: installed 1 in 0.737s
+USER is present: true
+
+$ npx -p @bahmutov/print-env print-env USER
+npx: installed 1 in 1.975s
+USER=gleb
+```
+
+The CLI argument `-p` is an alias to `--package` and tells `npx` which package to install, followed by the command alias (`has-env` or `print-env`) and its arguments.
+
 ### Small print
 
 Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2017
