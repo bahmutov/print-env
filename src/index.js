@@ -1,13 +1,12 @@
-'use strict'
+"use strict"
 
-function getVars (prefix) {
-  const vars = {}
-  Object.keys(process.env).forEach(key => {
-    if (key.startsWith(prefix)) {
-      vars[key] = process.env[key]
-    }
-  })
-  return vars
-}
+const getVars = prefix =>
+  Object.keys(process.env).reduce(
+    (result, key) =>
+      key.startsWith(prefix)
+        ? Object.assign(result, { [key]: process.env[key] })
+        : result,
+    {}
+  );
 
 module.exports = getVars
