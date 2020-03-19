@@ -9,8 +9,6 @@ node_js:
 script:
   - npm test
   - npm run travis-demo
-  # print names of all sensitive variables present
-  - ./bin/has-env.js NPM
 after_success:
   - npm run semantic-release
 branches:
