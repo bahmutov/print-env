@@ -1,6 +1,6 @@
 # @bahmutov/print-env [![renovate-app badge][renovate-badge]][renovate-app]
 
-> Prints all environment variables that start with given string
+> Prints all environment variables that start with given string(s)
 
 [![NPM][npm-icon] ][npm-url]
 
@@ -8,20 +8,21 @@
 [![semantic-release][semantic-image] ][semantic-url]
 [![js-standard-style][standard-image]][standard-url]
 
-## Install and use
+## Installation and usage
 
 Requires [Node](https://nodejs.org/en/) version 6 or above.
 
 Usually on your CI, you can just install this CLI tool globally
 
 ```sh
-npm install @bahmutov/print-env
+npm install -g @bahmutov/print-env
 ```
 
-Then call the tool with prefix, for example to show all Travis vars
+Then call the tool with 1 or more prefixes, for example to show all vars beginning with TRAVIS or NODE
 
 ```sh
-$ print-env TRAVIS
+$ print-env TRAVIS NODE
+NODE_ENV=development
 TRAVIS_BRANCH=master
 TRAVIS_SUDO=false
 TRAVIS_NODE_VERSION=8
@@ -33,12 +34,13 @@ Variables are sorted alphabetically.
 
 ### has-env
 
-You can also check if sensitive variables are present using `has-env PREFIX` syntax. In that case the values are not printed, only "present: true"
+You can also check if sensitive variables are present using the `has-env` command with the desired prefixes, in which case only the names of environment variables are printed
 
 ```sh
 $ has-env GH
-GH_API_KEY is present: true
-GH_INSTALLATION_ID is present: true
+Found environment variables:
+GH_API_KEY
+GH_INSTALLATION_ID
 ...
 ```
 
@@ -49,7 +51,8 @@ You can run this tool without installing it permanently using `npx` command
 ```sh
 $ npx -p @bahmutov/print-env has-env USER
 npx: installed 1 in 0.737s
-USER is present: true
+Found environment variables:
+USER
 
 $ npx -p @bahmutov/print-env print-env USER
 npx: installed 1 in 1.975s
@@ -58,44 +61,26 @@ USER=gleb
 
 The CLI argument `-p` is an alias to `--package` and tells `npx` which package to install, followed by the command alias (`has-env` or `print-env`) and its arguments.
 
-### Small print
+## About
 
-Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2017
+### Author
+Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2017
 
 * [@bahmutov](https://twitter.com/bahmutov)
 * [glebbahmutov.com](https://glebbahmutov.com)
 * [blog](https://glebbahmutov.com/blog)
 
-License: MIT - do anything with the code, but don't blame me if it does not work.
+### License
+[MIT](LICENSE) - do anything with the code, but don't blame me if it does not work.
 
-Support: if you find any problems with this module, email / tweet /
-[open issue](https://github.com/bahmutov/print-env/issues) on Github
+### Support
+If you find any problems with this module, [email][email-link] / [tweet][tweet-link] /
+[open issue][issue-link] on Github
 
-## MIT License
-
-Copyright (c) 2017 Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt;
-
-Permission is hereby granted, free of charge, to any person
-obtaining a copy of this software and associated documentation
-files (the "Software"), to deal in the Software without
-restriction, including without limitation the rights to use,
-copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the
-Software is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
-
+[email-link]: mailto:gleb.bahmutov@gmail.com
+[tweet-link]: https://twitter.com/intent/tweet?text=%40bahmutov
+[issue-link]: https://github.com/bahmutov/print-env/issues
+[email-link]: mailto:gleb.bahmutov@gmail.com
 [npm-icon]: https://nodei.co/npm/@bahmutov/print-env.svg?downloads=true
 [npm-url]: https://npmjs.org/package/@bahmutov/print-env
 [ci-image]: https://travis-ci.org/bahmutov/print-env.svg?branch=master

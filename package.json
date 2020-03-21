@@ -14,7 +14,7 @@
   "files": [
     "bin",
     "src/*.js",
-    "!src/*-spec.js"
+    "!src/*.spec.js"
   ],
   "homepage": "https://github.com/bahmutov/print-env#readme",
   "keywords": [
@@ -44,7 +44,7 @@
     "pretty": "prettier-standard 'src/*.js' 'bin/*.js'",
     "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
     "test": "npm run unit",
-    "unit": "mocha src/*-spec.js",
+    "unit": "mocha src/*.spec.js",
     "semantic-release": "semantic-release",
     "travis-demo": "node bin/print-env.js TRAVIS"
   },

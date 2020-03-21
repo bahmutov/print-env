@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 
-const prefix = process.argv[2]
-if (!prefix) {
-  console.error('usage: print-env PREFIX')
+const prefixes = process.argv.slice(2)
+if (!prefixes.length) {
+  console.error('usage: print-env [PREFIX]...')
   console.error(
-    'finds and prints all environment variables that start with PREFIX'
+    'finds and prints names of all environment variables present that start with any of the PREFIXes'
   )
-  console.error('like PREFIX_FOO=... PREFIX_BAR=...')
+  console.error('e.g. print-env FOO BAR => FOO_BAR=... BAR_BAZ=...')
   process.exit(-1)
 }
 
 const getVars = require('..')
-const variables = getVars(prefix)
+const variables = getVars(prefixes)
 // an object
 Object.keys(variables)
   .sort()
