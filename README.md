@@ -1,4 +1,4 @@
-# @bahmutov/print-env
+# @bahmutov/print-env [![renovate-app badge][renovate-badge]][renovate-app]
 
 > Prints all environment variables that start with given string(s)
 
@@ -89,3 +89,5 @@ If you find any problems with this module, [email][email-link] / [tweet][tweet-l
 [semantic-url]: https://github.com/semantic-release/semantic-release
 [standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg
 [standard-url]: http://standardjs.com/
+[renovate-badge]: https://img.shields.io/badge/renovate-app-blue.svg
+[renovate-app]: https://renovateapp.com/
