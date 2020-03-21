@@ -1,13 +1,18 @@
 'use strict'
 
-function getVars (prefix) {
-  const vars = {}
-  Object.keys(process.env).forEach(key => {
-    if (key.startsWith(prefix)) {
-      vars[key] = process.env[key]
-    }
-  })
-  return vars
-}
+/**
+ * Get the environment variables starting with any of the given prefixes
+ * @param {string[]} prefixes
+ * @example getVars(["FOO", "BAR"])
+ * @returns {Object.<string, string>}
+ */
+const getVars = prefixes =>
+  Object.keys(process.env).reduce(
+    (result, key) =>
+      prefixes.some(p => key.startsWith(p))
+        ? Object.assign(result, { [key]: process.env[key] })
+        : result,
+    {}
+  )
 
 module.exports = getVars
