@@ -5,10 +5,11 @@ cache:
 notifications:
   email: true
 node_js:
-  - '10'
+  - "10"
 script:
   - npm test
   - npm run travis-demo
+  - ./bin/has-env.js TRAVIS
 after_success:
   - npm run semantic-release
 branches:
