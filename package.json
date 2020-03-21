@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "ban-sensitive-files": "1.9.7",
-    "dependency-check": "2.9.1",
+    "dependency-check": "2.10.1",
     "deps-ok": "1.2.1",
     "dont-crack": "1.2.1",
     "execa": "0.8.0",
