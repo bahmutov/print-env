@@ -9,7 +9,7 @@ node_js:
 script:
   - npm test
   - npm run travis-demo
-  - ./bin/has-env.js TRAVIS
+  - ./bin/print-env.js --exists TRAVIS
 after_success:
   - npm run semantic-release
 branches:
