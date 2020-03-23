@@ -70,6 +70,10 @@ Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2017
 * [glebbahmutov.com](https://glebbahmutov.com)
 * [blog](https://glebbahmutov.com/blog)
 
+### Collaborators
+
+- Juleo Amosah [@Teomik129](https://github.com/Teomik129)
+
 ### License
 [MIT](LICENSE) - do anything with the code, but don't blame me if it does not work.
 
