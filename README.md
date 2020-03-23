@@ -61,6 +61,22 @@ USER=gleb
 
 The CLI argument `-p` is an alias to `--package` and tells `npx` which package to install, followed by the command alias (`has-env` or `print-env`) and its arguments.
 
+## Publishing new version
+
+New versions are automatically published to NPM from CI using [semantic-release](https://github.com/semantic-release/semantic-release) tool. In order for new version to be published, there should be commits since the last published version that have the subject with [semantic convention](https://github.com/semantic-release/semantic-release#commit-message-format).
+
+```text
+fix: stop graphite breaking when too much pressure applied | patch release
+feat: explain the feature | minor release
+```
+
+When making pull request, edit the _title of the squashed commit_ - this is what semantic release will look at to decide if a new version should be published or not. If you forget, no big deal, just push an empty commit with desired release subject
+
+```text
+git commit --allow-empty -m "feat: new exciting feature"
+git push
+```
+
 ## About
 
 ### Author
