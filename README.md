@@ -53,6 +53,19 @@ GH_INSTALLATION_ID
 ...
 ```
 
+### exit code
+
+If there are no variables starting with the given prefix, the tool with exit with code 1
+
+```sh
+$ npx @bahmutov/print-env -e FOO
+npx: installed 9 in 3.318s
+No environment variables found
+
+$ echo $?
+1
+```
+
 ### npx
 
 You can run this tool without installing it permanently using `npx` command

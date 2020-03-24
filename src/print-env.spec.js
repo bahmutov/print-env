@@ -49,8 +49,23 @@ describe('@bahmutov/print-env', () => {
       it('displays a message when no env variables are found', async () => {
         try {
           await execa('node', [bin, 'BAZX'])
-        } catch ({ stderr }) {
+        } catch ({ stderr, exitCode }) {
           snapshot(stderr.trim())
+          if (exitCode !== 1) {
+            throw new Error(
+              'Expected exit code to be 1 if no variables were found'
+            )
+          }
+        }
+      })
+
+      it('exits with 1 if no env variables exist', async () => {
+        try {
+          await execa('node', [bin, '--exists', 'BAZX'])
+        } catch ({ exitCode }) {
+          if (exitCode !== 1) {
+            throw new Error('Expected exit code to be 1 if no variables exist')
+          }
         }
       })
     })
