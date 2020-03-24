@@ -61,5 +61,9 @@
     "semantic-release": "17.0.4",
     "snap-shot-it": "7.9.3",
     "standard": "14.3.3"
+  },
+  "dependencies": {
+    "chalk": "3.0.0",
+    "commander": "5.0.0"
   }
 }

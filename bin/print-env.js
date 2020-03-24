@@ -1,20 +1,32 @@
 #!/usr/bin/env node
+const { program } = require('commander')
+const chalk = require('chalk')
 
-const prefixes = process.argv.slice(2)
+program.description(
+  'Finds and prints the names and values of all environment variables present that start with any of the PREFIXes '
+)
+program.usage('[options] <PREFIX>...')
+program.option('-e, --exists', 'Print only variable names')
+program.parse(process.argv)
+
+const prefixes = program.args
+
 if (!prefixes.length) {
-  console.error('usage: print-env [PREFIX]...')
-  console.error(
-    'finds and prints names of all environment variables present that start with any of the PREFIXes'
-  )
-  console.error('e.g. print-env FOO BAR => FOO_BAR=... BAR_BAZ=...')
+  console.error(program.help())
   process.exit(-1)
 }
 
 const getVars = require('..')
 const variables = getVars(prefixes)
-// an object
-Object.keys(variables)
-  .sort()
-  .forEach(key => {
-    console.log('%s=%s', key, variables[key])
-  })
+const keys = Object.keys(variables).sort()
+
+if (!keys.length) {
+  console.error(chalk.red('No environment variables found'))
+  process.exit(1)
+}
+
+console.info(chalk.green.bold('Found environment variables:'))
+keys.forEach(key => {
+  const output = `${key}${program.exists ? '' : `=${variables[key]}`}`
+  console.info(output)
+})

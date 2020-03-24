@@ -30,20 +30,16 @@ describe('@bahmutov/print-env', () => {
     const getBin = b => join(__dirname, '..', 'bin', b)
     describe('print-env', () => {
       const bin = getBin('print-env.js')
-      it('prints sorted variables', async () => {
+      it('displays usage on 0 args', async () => {
+        const { stdout } = await execa('node', [bin])
+        snapshot(stdout)
+      })
+      it('prints sorted variables with values', async () => {
         const { stdout } = await execa('node', [bin, 'FOOX'])
         snapshot(stdout)
       })
-      it('supports multiple prefixes', async () => {
-        const { stdout } = await execa('node', [bin, 'FOOX', 'BARX'])
-        snapshot(stdout)
-      })
-    })
-
-    describe('has-env', () => {
-      const bin = getBin('has-env.js')
-      it('prints present sorted variables', async () => {
-        const { stdout } = await execa('node', [bin, 'FOOX'])
+      it('prints sorted variables without values when passed -e|--exists flag', async () => {
+        const { stdout } = await execa('node', [bin, '-e', 'FOOX'])
         snapshot(stdout)
       })
       it('supports multiple prefixes', async () => {
