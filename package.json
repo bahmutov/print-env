@@ -5,8 +5,7 @@
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "bugs": "https://github.com/bahmutov/print-env/issues",
   "bin": {
-    "print-env": "bin/print-env.js",
-    "has-env": "bin/has-env.js"
+    "print-env": "bin/print-env.js"
   },
   "engines": {
     "node": ">=6"
