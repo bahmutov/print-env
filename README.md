@@ -18,7 +18,18 @@ Usually on your CI, you can just install this CLI tool globally
 npm install -g @bahmutov/print-env
 ```
 
-Then call the tool with 1 or more prefixes, for example to show all vars beginning with TRAVIS or NODE
+```sh
+$ print-env
+Usage: print-env [options] <PREFIX>...
+
+Finds and prints the names and values of all environment variables present that start with any of the PREFIXes
+
+Options:
+  -e, --exists  Print only variable names
+  -h, --help    display help for command
+```
+
+Call the tool with 1 or more prefixes, for example to show all vars beginning with TRAVIS or NODE:
 
 ```sh
 $ print-env TRAVIS NODE
@@ -32,12 +43,10 @@ TRAVIS_PRE_CHEF_BOOTSTRAP_TIME=2017-08-29T02:16:18
 
 Variables are sorted alphabetically.
 
-### has-env
-
-You can also check if sensitive variables are present using the `has-env` command with the desired prefixes, in which case only the names of environment variables are printed
+You can also check if sensitive variables are present using the `-e|--exists` command with the desired prefixes, in which case only the names of environment variables are printed:
 
 ```sh
-$ has-env GH
+$ print-env -e GH
 Found environment variables:
 GH_API_KEY
 GH_INSTALLATION_ID
@@ -49,17 +58,16 @@ GH_INSTALLATION_ID
 You can run this tool without installing it permanently using `npx` command
 
 ```sh
-$ npx -p @bahmutov/print-env has-env USER
+$ npx @bahmutov/print-env --exists USER
 npx: installed 1 in 0.737s
 Found environment variables:
 USER
 
-$ npx -p @bahmutov/print-env print-env USER
+$ npx @bahmutov/print-env USER
 npx: installed 1 in 1.975s
+Found environment variables:
 USER=gleb
 ```
-
-The CLI argument `-p` is an alias to `--package` and tells `npx` which package to install, followed by the command alias (`has-env` or `print-env`) and its arguments.
 
 ## Publishing new version
 
@@ -80,20 +88,23 @@ git push
 ## About
 
 ### Author
+
 Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2017
 
-* [@bahmutov](https://twitter.com/bahmutov)
-* [glebbahmutov.com](https://glebbahmutov.com)
-* [blog](https://glebbahmutov.com/blog)
+- [@bahmutov](https://twitter.com/bahmutov)
+- [glebbahmutov.com](https://glebbahmutov.com)
+- [blog](https://glebbahmutov.com/blog)
 
 ### Collaborators
 
 - Juleo Amosah [@Teomik129](https://github.com/Teomik129)
 
 ### License
+
 [MIT](LICENSE) - do anything with the code, but don't blame me if it does not work.
 
 ### Support
+
 If you find any problems with this module, [email][email-link] / [tweet][tweet-link] /
 [open issue][issue-link] on Github
 
