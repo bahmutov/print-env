@@ -56,3 +56,10 @@ exports['found at least FOO*'] = {
   "FOOXFE": "bar",
   "FOOXFA": "baz"
 }
+
+exports['does not find NONONO, but finds FOO*'] = `
+Found environment variables:
+FOOXFA=baz
+FOOXFE=bar
+FOOXFF=foo
+`
