@@ -45,7 +45,8 @@
     "test": "npm run unit",
     "unit": "mocha src/*.spec.js",
     "semantic-release": "semantic-release",
-    "travis-demo": "node bin/print-env.js TRAVIS"
+    "travis-demo": "node bin/print-env.js TRAVIS",
+    "github-demo": "node bin/print-env.js GITHUB"
   },
   "devDependencies": {
     "ban-sensitive-files": "1.9.7",
@@ -57,7 +58,7 @@
     "license-checker": "25.0.1",
     "mocha": "7.1.1",
     "prettier-standard": "16.2.1",
-    "semantic-release": "17.0.4",
+    "semantic-release": "^17.0.4",
     "snap-shot-it": "7.9.3",
     "standard": "14.3.3"
   },
