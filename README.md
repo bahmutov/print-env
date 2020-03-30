@@ -127,8 +127,8 @@ If you find any problems with this module, [email][email-link] / [tweet][tweet-l
 [email-link]: mailto:gleb.bahmutov@gmail.com
 [npm-icon]: https://nodei.co/npm/@bahmutov/print-env.svg?downloads=true
 [npm-url]: https://npmjs.org/package/@bahmutov/print-env
-[ci-image]: https://travis-ci.org/bahmutov/print-env.svg?branch=master
-[ci-url]: https://travis-ci.org/bahmutov/print-env
+[ci-image]: https://github.com/bahmutov/print-env/workflows/ci/badge.svg?branch=master
+[ci-url]: https://github.com/bahmutov/print-env/actions
 [semantic-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
 [semantic-url]: https://github.com/semantic-release/semantic-release
 [standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg
