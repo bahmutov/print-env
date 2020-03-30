@@ -26,6 +26,10 @@ describe('@bahmutov/print-env', () => {
     snapshot(printEnv(['FOO', 'BAR']))
   })
 
+  it('returns some found variables', () => {
+    snapshot('found at least FOO*', printEnv(['NONONO', 'FOO']))
+  })
+
   describe('cli', () => {
     const getBin = b => join(__dirname, '..', 'bin', b)
     describe('print-env', () => {

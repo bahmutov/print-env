@@ -50,3 +50,9 @@ FOOXFF=foo
 exports['@bahmutov/print-env cli print-env displays a message when no env variables are found 1'] = `
 No environment variables found
 `
+
+exports['found at least FOO*'] = {
+  "FOOXFF": "foo",
+  "FOOXFE": "bar",
+  "FOOXFA": "baz"
+}
