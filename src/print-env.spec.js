@@ -26,6 +26,10 @@ describe('@bahmutov/print-env', () => {
     snapshot(printEnv(['FOO', 'BAR']))
   })
 
+  it('returns some found variables', () => {
+    snapshot('found at least FOO*', printEnv(['NONONO', 'FOO']))
+  })
+
   describe('cli', () => {
     const getBin = b => join(__dirname, '..', 'bin', b)
     describe('print-env', () => {
@@ -67,6 +71,14 @@ describe('@bahmutov/print-env', () => {
             throw new Error('Expected exit code to be 1 if no variables exist')
           }
         }
+      })
+
+      it('exits with 0 if finds some variables from the list', async () => {
+        const {stdout, exitCode} = await execa('node', [bin, 'NONONO', 'FOO'])
+        if (exitCode !== 0) {
+          throw new Error('Expected successful exit')
+        }
+        snapshot('does not find NONONO, but finds FOO*', stdout)
       })
     })
   })
