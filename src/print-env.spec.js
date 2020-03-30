@@ -74,7 +74,7 @@ describe('@bahmutov/print-env', () => {
       })
 
       it('exits with 0 if finds some variables from the list', async () => {
-        const {stdout, exitCode} = await execa('node', [bin, 'NONONO', 'FOO'])
+        const { stdout, exitCode } = await execa('node', [bin, 'NONONO', 'FOO'])
         if (exitCode !== 0) {
           throw new Error('Expected successful exit')
         }
