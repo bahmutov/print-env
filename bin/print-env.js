@@ -21,12 +21,19 @@ const variables = getVars(prefixes)
 const keys = Object.keys(variables).sort()
 
 if (!keys.length) {
-  console.error(chalk.red('No environment variables found'))
+  console.error(chalk.red(`No environment variables found that start with ${prefixes.join(' ')}`))
   process.exit(1)
 }
 
-console.info(chalk.green.bold('Found environment variables:'))
+const found = []; const notFound = []
+
+prefixes.forEach(p => (keys.some(k => k.startsWith(p)) ? found : notFound).push(p))
+
+console.info(chalk.green.bold(`Found environment variables that start with ${found.join(' ')}:`))
 keys.forEach(key => {
   const output = `${key}${program.exists ? '' : `=${variables[key]}`}`
   console.info(output)
 })
+if (notFound.length) {
+  console.info(chalk.yellow(`No environment variables found that start with ${notFound.join(' ')}`))
+}

@@ -3,6 +3,9 @@
   "description": "Prints all environment variables that start with given string",
   "version": "0.0.0-development",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
+  "contributors": [
+    "Jules Amosah <teomik129@gmail.com>"
+  ],
   "bugs": "https://github.com/bahmutov/print-env/issues",
   "bin": {
     "print-env": "bin/print-env.js"

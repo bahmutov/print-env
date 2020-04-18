@@ -1,10 +1,11 @@
 'use strict'
 
 /* eslint-env mocha */
-const printEnv = require('.')
+const getVars = require('.')
 const snapshot = require('snap-shot-it')
 const execa = require('execa')
-const { join } = require('path')
+const { resolve } = require('path')
+const { strictEqual } = require('assert')
 
 describe('@bahmutov/print-env', () => {
   before(() => {
@@ -18,68 +19,43 @@ describe('@bahmutov/print-env', () => {
     })
   })
 
-  it('returns only prefixed env vars', () => {
-    snapshot(printEnv(['FOOX']))
-  })
-
-  it('supports multiple prefixes', () => {
-    snapshot(printEnv(['FOO', 'BAR']))
-  })
-
-  it('returns some found variables', () => {
-    snapshot('found at least FOO*', printEnv(['NONONO', 'FOO']))
+  it('has valid behavior for function', () => {
+    snapshot(getVars, [['FOOX']], [['FOO', 'BAR']], [['NONONO', 'FOO']])
   })
 
   describe('cli', () => {
-    const getBin = b => join(__dirname, '..', 'bin', b)
     describe('print-env', () => {
-      const bin = getBin('print-env.js')
-      it('displays usage on 0 args', async () => {
-        const { stdout } = await execa('node', [bin])
-        snapshot(stdout)
-      })
-      it('prints sorted variables with values', async () => {
-        const { stdout } = await execa('node', [bin, 'FOOX'])
-        snapshot(stdout)
-      })
-      it('prints sorted variables without values when passed -e|--exists flag', async () => {
-        const { stdout } = await execa('node', [bin, '-e', 'FOOX'])
-        snapshot(stdout)
-      })
-      it('supports multiple prefixes', async () => {
-        const { stdout } = await execa('node', [bin, 'FOOX', 'BARX'])
-        snapshot(stdout)
-      })
-      it('displays a message when no env variables are found', async () => {
+      const bin = resolve('bin', 'print-env.js')
+
+      const succesTestCases = [
+        ['displays usage when no arguments given', []],
+        ['prints sorted variables with values', ['FOOX']],
+        ['prints sorted variables without values when passed -e|--exists flag', ['-e', 'FOOX']],
+        ['supports multiple prefixes', ['FOOX', 'BARX']],
+        ['exits successfully if at least one variable is found', ['NOTFOUND', 'FOO']]
+      ]
+
+      const failTestCases = [
+        ['exits with 1 when no env variables are found', ['BAZX']],
+        ['exits with 1 when no env variables exist', ['--exists', 'BAZX']]
+      ]
+
+      succesTestCases.forEach(([successCase, args]) =>
+        it(successCase, async () => {
+          const { stdout, exitCode } = await execa(bin, args)
+          strictEqual(exitCode, 0, 'Expected successful exit')
+          snapshot(stdout)
+        })
+      )
+
+      failTestCases.forEach(([failCase, args]) => it(failCase, async () => {
         try {
-          await execa('node', [bin, 'BAZX'])
+          await execa(bin, args)
         } catch ({ stderr, exitCode }) {
-          snapshot(stderr.trim())
-          if (exitCode !== 1) {
-            throw new Error(
-              'Expected exit code to be 1 if no variables were found'
-            )
-          }
+          strictEqual(exitCode, 1, 'Expected exit code to be 1')
+          snapshot(stderr)
         }
-      })
-
-      it('exits with 1 if no env variables exist', async () => {
-        try {
-          await execa('node', [bin, '--exists', 'BAZX'])
-        } catch ({ exitCode }) {
-          if (exitCode !== 1) {
-            throw new Error('Expected exit code to be 1 if no variables exist')
-          }
-        }
-      })
-
-      it('exits with 0 if finds some variables from the list', async () => {
-        const { stdout, exitCode } = await execa('node', [bin, 'NONONO', 'FOO'])
-        if (exitCode !== 0) {
-          throw new Error('Expected successful exit')
-        }
-        snapshot('does not find NONONO, but finds FOO*', stdout)
-      })
+      }))
     })
   })
 })
