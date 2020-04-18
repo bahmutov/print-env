@@ -47,7 +47,7 @@ You can also check if sensitive variables are present using the `-e|--exists` co
 
 ```sh
 $ print-env -e GH
-Found environment variables:
+Found environment variables that start with GH:
 GH_API_KEY
 GH_INSTALLATION_ID
 ...
@@ -58,9 +58,8 @@ GH_INSTALLATION_ID
 If there are no variables starting with the given prefix, the tool with exit with code 1
 
 ```sh
-$ npx @bahmutov/print-env -e FOO
-npx: installed 9 in 3.318s
-No environment variables found
+$ print-env -e FOO
+No environment variables found that start with FOO
 
 $ echo $?
 1
@@ -73,12 +72,12 @@ You can run this tool without installing it permanently using `npx` command
 ```sh
 $ npx @bahmutov/print-env --exists USER
 npx: installed 1 in 0.737s
-Found environment variables:
+Found environment variables that start with USER:
 USER
 
 $ npx @bahmutov/print-env USER
 npx: installed 1 in 1.975s
-Found environment variables:
+Found environment variables that start with USER:
 USER=gleb
 ```
 
