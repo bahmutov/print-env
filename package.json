@@ -52,7 +52,7 @@
     "github-demo": "node bin/print-env.js GITHUB"
   },
   "devDependencies": {
-    "ban-sensitive-files": "1.9.8",
+    "ban-sensitive-files": "1.9.9",
     "dependency-check": "4.1.0",
     "deps-ok": "1.4.1",
     "dont-crack": "1.2.1",
