@@ -63,7 +63,7 @@
     "prettier-standard": "16.4.1",
     "semantic-release": "17.3.9",
     "snap-shot-it": "7.9.5",
-    "standard": "14.3.4"
+    "standard": "16.0.3"
   },
   "dependencies": {
     "chalk": "4.1.0",
