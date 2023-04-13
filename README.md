@@ -43,7 +43,7 @@ TRAVIS_PRE_CHEF_BOOTSTRAP_TIME=2017-08-29T02:16:18
 
 Variables are sorted alphabetically.
 
-You can also check if sensitive variables are present using the `-e|--exists` command with the desired prefixes, in which case only the names of environment variables are printed:
+You can also check if sensitive variables are present using the `-e|--exists` flag with the desired prefixes, in which case only the names of environment variables are printed:
 
 ```sh
 $ print-env -e GH
@@ -109,7 +109,7 @@ Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2017
 
 ### Collaborators
 
-- Juleo Amosah [@Teomik129](https://github.com/Teomik129)
+- Jules Amonith [@examosa](https://github.com/examosa)
 
 ### License
 
